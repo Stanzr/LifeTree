@@ -1,0 +1,18 @@
+Facebook:
+    appId: "282172928498649"
+    appSecret: "37b2f0d758442c9c2327baeaa196d7d2"
+    redirectPath: "/"
+    entryPath: "/auth/facebook"
+    callbackPath: "/auth/facebook/callback"
+    scope: "email"
+Twitter:
+    consumerKey: "l2AbWf22A136POS9XWxQ"
+    consumerSecret: "glDqSvEHPBt9PpIE7E6Oz5z58x01ENv2t5hcAHCrw"
+    redirectPath: "/"
+    entryPath: "/auth/twitter"
+    callbackPath: "/auth/twitter/callback"
+Session:
+    secret: "$23flkDKS$J23fm455JOJLU&&^O"
+
+App:
+    port: 8000
