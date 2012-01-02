@@ -8,7 +8,6 @@ everyauth.facebook
         console.log('callback error');
     })
     .findOrCreateUser(function (session, accessToken, accessTokExtra, fbUserMetadata) {
-        session.authWith = 'facebook';
         return fbUserMetadata;
 
     })
@@ -21,7 +20,6 @@ everyauth.twitter
     .consumerKey(CONFIG.Twitter.consumerKey)
     .consumerSecret(CONFIG.Twitter.consumerSecret)
     .findOrCreateUser(function (session, accessToken, accessTokenSecret, twitterUserMetadata) {
-        session.authWith = 'twitter';
         return twitterUserMetadata;
     })
     .redirectPath(CONFIG.Twitter.redirectPath)
