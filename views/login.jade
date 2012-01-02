@@ -1,0 +1,18 @@
+h1 Login into LifeTree
+- if ('undefined' !== typeof errors && errors.length)
+  ul#errors
+    - each error in errors
+      li.error= error
+form(action='/login', method='post')
+  #login
+    p Login
+    input(type='text', name='email')
+  #password
+    p Password
+    input(type='password', name='password')
+  #submit
+    input(type='submit') Login
+
+
+
+

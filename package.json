@@ -22,7 +22,9 @@
         "broom":"*",
         "config":"*",
         "everyauth":"*",
-        "express-namespace":"*"
+        "express-namespace":"*",
+        "jade":"*",
+        "FastLegS":"*"
 
     },
     "devDependencies":{
