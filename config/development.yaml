@@ -13,6 +13,31 @@ Twitter:
     callbackPath: "/auth/twitter/callback"
 Session:
     secret: "$23flkDKS$J23fm455JOJLU&&^O"
+    salt: "3l4k2j3u4982u7(AIO$UY@42y6hf2h3IKH4IJK(&$@JN@#NJU%Y"
 
 App:
     port: 8000
+    db:
+        user: "postgres"
+        password: "atlantida"
+        host: "127.0.0.1"
+        dbName: "lifetree"
+        port: 5432
+    User:
+        default_role: 'user'
+Phrases:
+    empty_email: "Email is empty"
+    empty_password: "password is empty"
+    email_already_taken: "Email already taken"
+    login_and_psw_pair_not_found: "login failed"
+Views:
+    register: "register.jade"
+    login: "login.jade"
+    login_path: "/login"
+    register_path: "/register"
+    login_success_path: "/"
+
+
+
+
+

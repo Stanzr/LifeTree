@@ -3,6 +3,7 @@ var CONFIG = require('config');
 var auth = require('./authentication.js');
 var app = express.createServer();
 
+
 /**
  * app.use directives
  */
@@ -10,21 +11,23 @@ app.use(express.bodyParser());
 app.use(express.cookieParser());
 app.use(express.session({secret:CONFIG.Session.secret}));
 app.use(auth.middleware());
+app.use(express.static(__dirname + '/public'));
 
+/**
+ * app.set directives
+ */
+app.set('view engine', 'jade');
 
 /**
  * Routes
  */
 app.get('/', function (req, res) {
     res.header('Content-Type', 'text/html');
-    console.log(req.session);
     if (!req.session.auth) {
-        res.end('Login please <a href="/auth/facebook">with facebook</a> or <a href="/auth/twitter">with Twitter</a>');
+        res.render('hello.jade');
     } else {
         var session = req.session;
-        var urlPath = session.authWith == 'facebook' ? session.auth.facebook.user.link : 'http://twitter.com/!#' + session.auth.twitter.user.screen_name;
-        var name = session.authWith == 'facebook' ? session.auth.facebook.user.name : session.auth.twitter.user.name;
-        res.end('hello <a href="' + urlPath + '">' + name + '</a> <br/> or <a href="/logout">logout</a>');
+        res.render('main.jade');
     }
 });
 
@@ -37,6 +40,9 @@ app.get('/secure', function (req, res) {
         res.end('you should log in first <a href="/">back</a>');
     }
 
+});
+app.get('/pub', function (req, res) {
+    res.render('login.jade');
 });
 
 
