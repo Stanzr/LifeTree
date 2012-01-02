@@ -1,0 +1,32 @@
+{
+    "author":"",
+    "name":"YourHumanCapital",
+    "description":"prototype",
+    "version":"0.0.1",
+    "repository":{
+        "url":""
+    },
+    "main":"index.js",
+    "scripts":{
+        "test":"vows test/* --spec"
+    },
+    "engines":{
+        "node":"~0.6.6"
+    },
+    "dependencies":{
+        "async":"*",
+        "express":"*",
+        "vows":"*",
+        "pg":"*",
+        "socket.io":"*",
+        "broom":"*",
+        "config":"*",
+        "everyauth":"*",
+        "express-namespace":"*"
+
+    },
+    "devDependencies":{
+        "Faker":"https://github.com/clitika/Faker.js/tarball/master",
+        "mockery":"*"
+    }
+}
