@@ -24,7 +24,8 @@
         "everyauth":"*",
         "express-namespace":"*",
         "jade":"*",
-        "FastLegS":"*"
+        "FastLegS":"*",
+        "express-resource":"*"
 
     },
     "devDependencies":{

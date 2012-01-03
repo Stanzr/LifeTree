@@ -1,6 +1,8 @@
 var express = require('express');
 var CONFIG = require('config');
+var res = require('express-resource');
 var auth = require('./authentication.js');
+
 var app = express.createServer();
 
 
@@ -18,6 +20,18 @@ app.use(express.static(__dirname + '/public'));
  */
 app.set('view engine', 'jade');
 
+
+/**
+ * app.resource directives
+ */
+var resourceOptions = {
+    'dbModels':'dbmodels',
+    'name':'test name'
+};
+var SurveyManagerResource = require('./resources/API/survey/survey_management.js').configure(resourceOptions);
+var UserManagerResource = require('./resources/API/user/user_management.js').configure(resourceOptions);
+app.resource('survey', SurveyManagerResource);
+app.resource('user', UserManagerResource);
 /**
  * Routes
  */
@@ -33,7 +47,6 @@ app.get('/', function (req, res) {
 
 app.get('/secure', function (req, res) {
     res.header('Content-Type', 'text/html');
-    console.log('attemting to visit secure place')
     if (req.session.auth.loggedIn) {
         res.end('very secret place');
     } else {
