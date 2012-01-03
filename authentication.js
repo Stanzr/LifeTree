@@ -2,6 +2,8 @@ var everyauth = require('everyauth');
 var CONFIG = require('config');
 var User = require('./libs/pgModels.js').User;
 var crypto = require('crypto');
+var request = require('request'); //for retrieving Facebook profile pic
+
 everyauth.facebook
     .appId(CONFIG.Facebook.appId)
     .appSecret(CONFIG.Facebook.appSecret)
@@ -10,23 +12,45 @@ everyauth.facebook
     })
     .findOrCreateUser(function (session, accessToken, accessTokExtra, fbUserMetadata) {
         var promise = this.Promise();
-        User.findOne({oauth_token:accessToken}, {only:['id', 'role', 'user_name']}, function (err, user) {
+        User.findOne({oauth_token:accessToken}, {only:['id', 'role', 'user_name', 'profile_pic_url']}, function (err, user) {
             if (err) {
                 promise.fulfill([err]);
             }
+
             if (user === undefined) {
-                User.create({
-                    'oauth_token':accessToken,
-                    'user_name':fbUserMetadata.name,
-                    'role':CONFIG.App.User.default_role
-                }, function (err, newUser) {
-                    if (err) {
-                        promise.fulfill([err]);
-                    } else {
-                        promise.fulfill(newUser);
+                var url = 'https://graph.facebook.com/' + fbUserMetadata.username + '?fields=picture&access_token=' + accessToken;
+                request(url, function (err, resp, body) {
+                    var profile_pic = {'picture':'defaultpic.jpg'};
+                    if (resp.statusCode === 200) {
+                        var profile_pic = JSON.parse(body);
                     }
-                })
+                    User.create({
+                        'oauth_token':accessToken,
+                        'user_name':fbUserMetadata.name,
+                        'role':CONFIG.App.User.default_role,
+                        'email':fbUserMetadata.email,
+                        'profile_pic_url':profile_pic.picture
+
+                    }, function (err, newUser) {
+                        if (err) {
+                            promise.fulfill([err]);
+                        } else {
+                            var newUsr = newUser.rows[0];
+                            var usr = {
+                                'id':newUsr.id,
+                                'user_name':newUsr.user_name,
+                                'role':newUsr.role,
+                                'profile_pic_url':newUsr.profile_pic_url
+                            };
+                            session.info = usr;
+                            promise.fulfill(usr);
+                        }
+                    })
+
+                });
+
             } else {
+                session.info = user;
                 promise.fulfill(user);
             }
         });
@@ -43,7 +67,7 @@ everyauth.twitter
     .consumerSecret(CONFIG.Twitter.consumerSecret)
     .findOrCreateUser(function (session, accessToken, accessTokenSecret, twitterUserMetadata) {
         var promise = this.Promise();
-        User.findOne({oauth_token:accessToken, oauth_token_secret:accessTokenSecret}, {only:['id', 'role', 'user_name']}, function (err, user) {
+        User.findOne({oauth_token:accessToken, oauth_token_secret:accessTokenSecret}, {only:['id', 'role', 'user_name', 'profile_pic_url']}, function (err, user) {
             if (err) {
                 promise.fulfill([err]);
             }
@@ -52,15 +76,25 @@ everyauth.twitter
                     'oauth_token':accessToken,
                     'oauth_token_secret':accessTokenSecret,
                     'user_name':twitterUserMetadata.name,
-                    'role':CONFIG.App.User.default_role
+                    'role':CONFIG.App.User.default_role,
+                    'profile_pic_url':twitterUserMetadata.profile_image_url
                 }, function (err, newUser) {
                     if (err) {
                         promise.fulfill([err]);
                     } else {
-                        promise.fulfill(newUser);
+                        var newUsr = newUser.rows[0];
+                        var usr = {
+                            'id':newUsr.id,
+                            'user_name':newUsr.user_name,
+                            'role':newUsr.role,
+                            'profile_pic_url':newUsr.profile_pic_url
+                        };
+                        session.info = usr;
+                        promise.fulfill(usr);
                     }
                 })
             } else {
+                session.info = user;
                 promise.fulfill(user);
             }
         });
@@ -92,7 +126,7 @@ everyauth.password
 
         var promise = this.Promise();
         var secretPsw = encryptPassword(password, CONFIG.Session.salt);
-        User.findOne({login:login, password:secretPsw}, {only:['id', 'role', 'user_name']}, function (err, user) {
+        User.findOne({login:login, password:secretPsw}, {only:['id', 'role', 'user_name', 'profile_pic_url']}, function (err, user) {
             if (err) {
                 promise.fulfill([err]);
             } else {
