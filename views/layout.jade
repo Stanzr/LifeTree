@@ -1,18 +1,30 @@
 !!! 5
 html
-    head
-        title = "login"
-    body
-#head
-    a(href='/auth/twitter') Twitter
-    br
-    a(href='/auth/facebook') Facebook
-    br
-    a(href='/login') login
-    br
-    a(href='/register') register
-    br
-
+  head
+    title = "login"
+    link(rel="stylesheet",type="text/css",href="/css/main.css")
+  body
+    #head
+      if('undefined' !== typeof session && session.auth &&session.auth.loggedIn===true)
+        p#hello Hi, #{session.info.user_name}
+          img#profile_pic(src=session.info.profile_pic_url)
+      else
+        table
+          tr
+            td
+              a(href='/auth/twitter')
+                img#twitter_login(src='/img/twitter_newbird_blue.png')
+            td
+              a(href='/auth/facebook')
+                img#fb_login(src='/img/f_logo.jpg')
+            td
+              p#login_message
+                |or you can
+                a(href='/login') login
+                |or even
+                a(href='/register') register
+            td
+              a(href='/survey') check out surveys
 
     div!=body
 
