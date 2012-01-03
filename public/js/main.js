@@ -1,0 +1,31 @@
+var socket = io.connect(document.location.origin);
+var user;
+function appendToChat(data, from) {
+    var img = user ? '<img class="chat_profile_pic" src="' + user.photo + '"/>' : '';
+    var html = '<p class="chat_msg">' + img + (from === 'me' ? 'me:&nbsp;' : data.sender + ':&nbsp;') + data.msg + '</p>';
+    $('#chat_window').append(html);
+    document.getElementById('chat_window').scrollByLines(3);
+}
+socket.on('usersInRoom', function (users) {
+    $('#usersInRoom').html('');
+    for (var i in users) {
+        $('#usersInRoom').append('<img src="' + users[i].profile_pic + '" alt="' + users[i].name + '"/>')
+    }
+
+});
+socket.on('chatMessage', function (data) {
+    appendToChat(data);
+});
+socket.on('userInfo', function (userInfo) {
+    user = userInfo;
+});
+$('#chat_send').live('click', function () {
+    var msg = $('#chat_message').val();
+    if (msg.length > 0) {
+        var data = {'msg':msg};
+        socket.emit('chatMessage', data);
+        appendToChat(data, 'me');
+        $('#chat_message').val('');
+    }
+});
+

@@ -3,6 +3,10 @@ html
   head
     title = "login"
     link(rel="stylesheet",type="text/css",href="/css/main.css")
+    script(lang="text/javascript",src="/socket.io/socket.io.js")
+    script(lang="text/javascript",src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
+    script(lang="text/javascript",src="/js/main.js")
+
   body
     #head
       if('undefined' !== typeof session && session.auth &&session.auth.loggedIn===true)
@@ -25,6 +29,8 @@ html
                 a(href='/register') register
             td
               a(href='/survey') check out surveys
+            td
+              a(href='/chat') try out our chat!
 
     div!=body
 
