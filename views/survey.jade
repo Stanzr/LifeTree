@@ -1,0 +1,18 @@
+h2 Surveys list
+- if ('undefined' !== typeof surveys && surveys.length)
+  - each survey in surveys
+     a(href='/survey/'+survey.slug) #{survey.survey_name}
+
+- if ('undefined' !== typeof survey && survey.id)
+    p Taking survey: #{survey.survey_name}
+    p Survey created at: #{survey.created_at}
+    p.questions
+    -if('undefined' !== typeof survey.survey_questions && survey.survey_questions.length)
+       -each question in survey.survey_questions
+            p.qtitle #{question.question}
+                ul
+                -if('undefined' !== typeof question.answers && question.answers.length)
+                    -each answer in question.answers
+                      li  input.answer(type='checkbox')  #{answer.answer}
+
+

@@ -25,7 +25,8 @@
         "express-namespace":"*",
         "jade":"*",
         "FastLegS":"*",
-        "express-resource":"*"
+        "express-resource":"*",
+        "ejs":"*"
 
     },
     "devDependencies":{

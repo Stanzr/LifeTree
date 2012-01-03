@@ -2,7 +2,7 @@ var express = require('express');
 var CONFIG = require('config');
 var res = require('express-resource');
 var auth = require('./authentication.js');
-
+var dbModels = require('./libs/pgModels.js');
 var app = express.createServer();
 
 
@@ -25,7 +25,7 @@ app.set('view engine', 'jade');
  * app.resource directives
  */
 var resourceOptions = {
-    'dbModels':'dbmodels',
+    'dbModels':dbModels,
     'name':'test name'
 };
 var SurveyManagerResource = require('./resources/API/survey/survey_management.js').configure(resourceOptions);

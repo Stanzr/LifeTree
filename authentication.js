@@ -10,7 +10,7 @@ everyauth.facebook
     })
     .findOrCreateUser(function (session, accessToken, accessTokExtra, fbUserMetadata) {
         var promise = this.Promise();
-        User.findOne({oauth_token:accessToken}, function (err, user) {
+        User.findOne({oauth_token:accessToken}, {only:['id', 'role', 'user_name']}, function (err, user) {
             if (err) {
                 promise.fulfill([err]);
             }
@@ -43,7 +43,7 @@ everyauth.twitter
     .consumerSecret(CONFIG.Twitter.consumerSecret)
     .findOrCreateUser(function (session, accessToken, accessTokenSecret, twitterUserMetadata) {
         var promise = this.Promise();
-        User.findOne({oauth_token:accessToken, oauth_token_secret:accessTokenSecret}, function (err, user) {
+        User.findOne({oauth_token:accessToken, oauth_token_secret:accessTokenSecret}, {only:['id', 'role', 'user_name']}, function (err, user) {
             if (err) {
                 promise.fulfill([err]);
             }
@@ -92,7 +92,7 @@ everyauth.password
 
         var promise = this.Promise();
         var secretPsw = encryptPassword(password, CONFIG.Session.salt);
-        User.findOne({login:login, password:secretPsw}, function (err, user) {
+        User.findOne({login:login, password:secretPsw}, {only:['id', 'role', 'user_name']}, function (err, user) {
             if (err) {
                 promise.fulfill([err]);
             } else {
@@ -121,7 +121,7 @@ everyauth.password
             return errors;
         } else {
             var promise = this.Promise();
-            User.findOne({'email':newUserAttributes.email}, function (err, email) {
+            User.findOne({'email':newUserAttributes.email}, {only:['email']}, function (err, email) {
                 if (err) {
                     promise.fulfill([err]);
                 } else {
@@ -139,7 +139,7 @@ everyauth.password
     .registerUser(function (newUserAttributes) {
         var secretPsw = encryptPassword(newUserAttributes.password, CONFIG.Session.salt);
         var promise = this.Promise();
-        User.create({'login':newUserAttributes.email, 'email':newUserAttributes.email, 'password':secretPsw}, function (err, User) {
+        User.create({'login':newUserAttributes.email, 'email':newUserAttributes.email, 'password':secretPsw}, {only:['id', 'role', 'user_name']}, function (err, User) {
             if (err) {
                 promise.fulfill([err]);
             } else {
