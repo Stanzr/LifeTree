@@ -4,7 +4,7 @@ Facebook:
     redirectPath: "/"
     entryPath: "/auth/facebook"
     callbackPath: "/auth/facebook/callback"
-    scope: "email"
+    scope: "email,user_photos"
 Twitter:
     consumerKey: "l2AbWf22A136POS9XWxQ"
     consumerSecret: "glDqSvEHPBt9PpIE7E6Oz5z58x01ENv2t5hcAHCrw"

@@ -8,8 +8,7 @@ function setOptions(opts) {
 exports.configure = setOptions;
 var api = {};
 api.index = function (req, res) {
-    options.dbModels.Survey.find({}, {'include':{'survey_questions':{'include':{'answers':{}}}}}, function (err, survey) {
-        console.log(survey);
+    options.dbModels.Survey.find({}, function (err, survey) {
         res.render('survey', {'surveys':survey});
     });
 };
@@ -21,7 +20,15 @@ api.create = function (req, res) {
 };
 api.show = function (req, res) {
     options.dbModels.Survey.findOne({'slug':req.params.survey}, {'include':{'survey_questions':{'include':{'answers':{}}}}}, function (err, survey) {
-        res.render('survey', {'survey':survey});
+        if (err) {
+
+        } else {
+            if (!survey) {
+
+            }
+        }
+        var range = ['Extremely important', 'Important', 'Somewhat Important'];
+        res.render('survey', {'survey':survey, 'default_range':range});
     });
 };
 api.edit = function (req, res) {

@@ -14,6 +14,11 @@ app.use(express.cookieParser());
 app.use(express.session({secret:CONFIG.Session.secret}));
 app.use(auth.middleware());
 app.use(express.static(__dirname + '/public'));
+app.dynamicHelpers({
+    session:function (req, res) {
+        return req.session;
+    }
+});
 
 /**
  * app.set directives
@@ -37,6 +42,7 @@ app.resource('user', UserManagerResource);
  */
 app.get('/', function (req, res) {
     res.header('Content-Type', 'text/html');
+    console.log(req.session);
     if (!req.session.auth) {
         res.render('hello.jade');
     } else {
@@ -55,7 +61,7 @@ app.get('/secure', function (req, res) {
 
 });
 app.get('/pub', function (req, res) {
-    res.render('login.jade');
+    console.log(req.session);
 });
 
 

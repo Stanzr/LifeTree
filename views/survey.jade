@@ -1,18 +1,46 @@
-h2 Surveys list
+
 - if ('undefined' !== typeof surveys && surveys.length)
+  h2 Surveys list
   - each survey in surveys
-     a(href='/survey/'+survey.slug) #{survey.survey_name}
+    a(href='/survey/'+survey.slug) #{survey.survey_name}
 
 - if ('undefined' !== typeof survey && survey.id)
-    p Taking survey: #{survey.survey_name}
+    h2 Taking survey: #{survey.survey_name}
     p Survey created at: #{survey.created_at}
     p.questions
     -if('undefined' !== typeof survey.survey_questions && survey.survey_questions.length)
-       -each question in survey.survey_questions
-            p.qtitle #{question.question}
-                ul
-                -if('undefined' !== typeof question.answers && question.answers.length)
-                    -each answer in question.answers
-                      li  input.answer(type='checkbox')  #{answer.answer}
+      -each question in survey.survey_questions
+        p.title
+          h3 * #{question.question}
+          -if(question.template === 'line')
+            ul
+              -if('undefined' !== typeof question.answers && question.answers.length)
+                each answer in question.answers
+                  li
+                    input(type='checkbox',value = answer.answer)
+                    #{answer.answer}
+          -if(question.template === 'table')
+            table.survey_table(cellspacing="0",cellpadding="0")
+              -if('undefined' !== typeof question.answers && question.answers.length)
+                tr.survey_table_head
+                  td
+                  each range in default_range
+                    td #{range}
+                each answer in question.answers
+                  tr
+                    td
+                      #{answer.answer}
+                    each range in default_range
+                      td.container
+                        input(type='radio', name=answer.id,value=range)
+
+
+
+
+
+
+
+
+
 
 
