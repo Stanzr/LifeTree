@@ -1,0 +1,24 @@
+#twitter_login {
+    width: 40px;
+    height: 40px;
+}
+
+#fb_login {
+    width: 40px;
+    height: 40px;
+}
+
+#login_message {
+    text-align: center;
+    font-family: Geneva, Arial, Helvetica, sans-serif;
+}
+
+.survey_table {
+    text-align: center;
+    margin: 0px;
+    width: 80%;
+}
+
+.survey_table_head {
+    background: #EFEFEE;
+}

@@ -22,7 +22,7 @@ everyauth.facebook
                 request(url, function (err, resp, body) {
                     var profile_pic = {'picture':'defaultpic.jpg'};
                     if (resp.statusCode === 200) {
-                        var profile_pic = JSON.parse(body);
+                        profile_pic = JSON.parse(body);
                     }
                     User.create({
                         'oauth_token':accessToken,
