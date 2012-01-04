@@ -2,7 +2,8 @@
 
 ## Synopsis
 
-pending...
+LifeTree is a survey, financial planning, and lead generation application prototype.  The objective of the application
+is to measure financial decisions based on retirement planning shortfall risk.
 
 ## Initial setup
 
