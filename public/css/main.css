@@ -19,6 +19,29 @@
     width: 80%;
 }
 
+#chat_layout {
+    height: 300px;
+    width: 200px;
+}
+
+#chat_window {
+    height: 300px;
+    width: 200px;
+    overflow: auto;
+    border: 1px solid black;
+}
+
+.chat_msg {
+    font-size: 12px;
+    font-family: Geneva, Arial, Helvetica, sans-serif;
+    background: #EFEFEE;
+}
+
+.chat_profile_pic {
+    height: 30px;
+    width: 30px;
+}
+
 .survey_table_head {
     background: #EFEFEE;
 }

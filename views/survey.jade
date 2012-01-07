@@ -1,8 +1,10 @@
 
 - if ('undefined' !== typeof surveys && surveys.length)
   h2 Surveys list
-  - each survey in surveys
-    a(href='/survey/'+survey.slug) #{survey.survey_name}
+  ul
+    - each survey in surveys
+      li
+        a(href='/survey/'+survey.slug) #{survey.survey_name}
 
 - if ('undefined' !== typeof survey && survey.id)
     h2 Taking survey: #{survey.survey_name}
