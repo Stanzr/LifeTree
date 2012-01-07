@@ -23,6 +23,7 @@
         "config":"*",
         "everyauth":"*",
         "express-namespace":"*",
+        "underscore":"*",
         "jade":"*",
         "FastLegS":"*",
         "express-resource":"*",
@@ -31,7 +32,8 @@
 
     },
     "devDependencies":{
-        "Faker":"https://github.com/clitika/Faker.js/tarball/master",
-        "mockery":"*"
+        "Faker":"*",
+        "mockery":"*",
+        "mocha":"*"
     }
 }

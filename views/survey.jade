@@ -14,7 +14,7 @@
       -each question in survey.survey_questions
         p.title
           h3 * #{question.question}
-          -if(question.template === 'line')
+          -if(question.template === 'list')
             ul
               -if('undefined' !== typeof question.answers && question.answers.length)
                 each answer in question.answers
