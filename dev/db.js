@@ -37,6 +37,7 @@ if("development" !== deployment){
     console.error("If you really want to do it - you should set NODE_ENV to \"development\"");
     console.error("or launch this command \"NODE_ENV=development jake db:drop\"");
     process.exit(1);
+    
 
 }
 
@@ -52,11 +53,9 @@ exports.drop = function(){
         if(err){
             console.log("ouch, I've got an error:");
             console.log("severity:%s code: %s details:%s",err.severity,err.code,err.detail);
-            process.exit(1);
-
         }else{
             console.log('done.');
-            process.exit(0);
+            
         }
     });
 };
@@ -70,17 +69,19 @@ exports.schema = function(){
         client.query(sql.toString(),function(err){
             if(!err){
                 console.log('schema created successfully');
-                process.exit(0);
+                
             }else{
                 console.log('something go wrong');
                 console.log(err);
                 process.exit(1);
+                
             }
 
         })
     }else{
         console.log('cant find '+dbSchemaPath);
         process.exit(1);
+        
     }
 };
 
@@ -90,7 +91,7 @@ exports.create = function(){
     client.query("CREATE DATABASE "+config.App.db.dbName,function(err,result){
         if(!err&&result){
             console.log("done.");
-            process.exit(0);
+            
         }else{
             console.log(err);
             process.exit(1);
@@ -100,7 +101,7 @@ exports.create = function(){
 
 
 exports.seed = function(){
-
+    require('./seed.js');
 };
 
 

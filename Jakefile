@@ -25,4 +25,28 @@ namespace('db',function(){
     task("seed",function(){
         db.seed();
     });
+
+    desc("drops db,create db, make db schema and seeds it");
+    task("renew",function(){
+        function interval(){
+            var timer = 0;
+            return function(){
+                return timer+=1000;
+            }
+        }
+        var timeout = interval();
+
+        jake.Task['db:drop'].invoke();
+        setTimeout(function(){
+            jake.Task['db:create'].invoke();
+        },timeout());
+        setTimeout(function(){
+            jake.Task['db:schema'].invoke();
+        },timeout());
+        setTimeout(function(){
+            jake.Task['db:seed'].invoke();
+
+        },timeout());
+
+    })
 });

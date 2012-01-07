@@ -1,8 +1,10 @@
 
 - if ('undefined' !== typeof surveys && surveys.length)
   h2 Surveys list
-  - each survey in surveys
-    a(href='/survey/'+survey.slug) #{survey.survey_name}
+  ul
+    - each survey in surveys
+      li
+        a(href='/survey/'+survey.slug) #{survey.survey_name}
 
 - if ('undefined' !== typeof survey && survey.id)
     h2 Taking survey: #{survey.survey_name}
@@ -12,7 +14,7 @@
       -each question in survey.survey_questions
         p.title
           h3 * #{question.question}
-          -if(question.template === 'line')
+          -if(question.template === 'list')
             ul
               -if('undefined' !== typeof question.answers && question.answers.length)
                 each answer in question.answers

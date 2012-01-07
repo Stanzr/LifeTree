@@ -194,7 +194,6 @@ ALTER SEQUENCE survey_answers_id_seq OWNED BY survey_answers.id;
 CREATE TABLE survey_questions (
     id integer NOT NULL,
     survey_id integer NOT NULL,
-    answer_type_id integer NOT NULL,
     question character varying(1024),
     template character varying(1024)
 );
@@ -505,14 +504,6 @@ ALTER TABLE ONLY user_answers
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 2188 (class 1259 OID 16948)
--- Dependencies: 169
--- Name: fki_answer_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX fki_answer_id ON survey_questions USING btree (answer_type_id);
 
 
 --
