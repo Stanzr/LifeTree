@@ -12,25 +12,24 @@ html
       if('undefined' !== typeof session && session.auth &&session.auth.loggedIn===true)
         p#hello Hi, #{session.info.user_name}
           img#profile_pic(src=session.info.profile_pic_url)
-      else
-        table
-          tr
-            td
-              a(href='/auth/twitter')
-                img#twitter_login(src='/img/twitter_newbird_blue.png')
-            td
-              a(href='/auth/facebook')
-                img#fb_login(src='/img/f_logo.jpg')
-            td
-              p#login_message
-                |or you can
-                a(href='/login') login
-                |or even
-                a(href='/register') register
-            td
-              a(href='/survey') check out surveys
-            td
-              a(href='/chat') try out our chat!
+      table
+        tr
+          td
+            a(href='/auth/twitter')
+              img#twitter_login(src='/img/twitter_newbird_blue.png')
+          td
+            a(href='/auth/facebook')
+              img#fb_login(src='/img/f_logo.jpg')
+          td
+            p#login_message
+              |or you can
+              a(href='/login') login
+              |or even
+              a(href='/register') register
+          td
+            a(href='/survey') check out surveys
+          td
+            a(href='/chat') try out our chat!
 
     div!=body
 
