@@ -33,6 +33,7 @@
     },
     "devDependencies":{
         "Faker":"*",
-        "mockery":"*"
+        "mockery":"*",
+        "mocha":"*"
     }
 }
