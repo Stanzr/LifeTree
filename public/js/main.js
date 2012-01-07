@@ -33,6 +33,9 @@ socket.on('usersInRoom', function (users) {
 socket.on('chatMessage', function (data) {
     appendToChat(data);
 });
+socket.on('whatever',function(data){
+    console.log(arguments);
+});
 socket.on('userInfo', function (userInfo) {
     user = userInfo;
 });
@@ -45,4 +48,16 @@ $('#chat_send').live('click', function () {
         $('#chat_message').val('');
     }
 });
+setTimeout(function(){
+    $.ajax({
+        type: 'GET',
+        url: '/survey',
+        success: function(){
+            console.log(arguments)
+        }
+
+    });
+
+},1000);
+
 
