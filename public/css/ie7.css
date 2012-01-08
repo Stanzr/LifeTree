@@ -1,0 +1,90 @@
+div.bios
+{
+padding-bottom:20px;
+}
+
+div.buttons
+{
+padding-bottom:33px;
+}
+
+div.discuss_info p.message,div.likes_info p.message
+{
+padding-bottom:6px;
+}
+
+div.most_likes,div.social
+{
+padding-bottom:24px;
+}
+
+div.people ul
+{
+padding-bottom:23px;
+}
+
+div.selector select
+{
+margin-top:17px;
+}
+
+div.ui_right ul.ui_nav
+{
+padding-bottom:12px;
+}
+
+ul.event_listings li p span,div.discuss_info p span,div p span.days,div.likes_info p span
+{
+margin-top:-18px;
+}
+
+span.toink
+{
+display:none;
+}
+
+p.choices:hover span.toink
+{
+display:inline;
+}
+
+div.right_question 
+{
+padding-bottom:21px!important;
+}
+
+div.bottom_line p span 
+{
+margin-top:-18px;
+}
+
+span.toink_info 
+{
+border:1px solid #ddd!important;
+}
+
+button.next_button 
+{
+margin-top:24px;
+}
+
+div.bottom_line 
+{
+margin-top:31px;
+}
+
+div.lt_left 
+{
+padding-bottom:30px;
+}
+
+div.obi_wan
+{
+padding-bottom:32px;
+margin-bottom:-10px;
+}
+
+p.opt_in input 
+{
+margin-left:-10px;
+}

@@ -13,14 +13,13 @@ var session_store = new MemoryStore();
  */
 app.use(express.bodyParser());
 app.use(function(req,res,next){
+    console.log(req.url);
     var ajax = 'x-requested-with';
     if(req.headers[ajax]&&req.headers[ajax]==='XMLHttpRequest'){
         res.setHeader('Content-type','application/json');
         res.render = function(template,responseText){
             res.send(JSON.stringify(responseText));
         }
-    }else{
-        res.header('Content-Type', 'text/html');
     }
 
     next();
@@ -56,8 +55,9 @@ app.resource('user', UserManagerResource);
  * Routes
  */
 app.get('/', function (req, res) {
+
     if (!req.session.auth) {
-        res.render('hello.jade');
+        res.render('main.jade');
     } else {
         res.render('main.jade');
     }
