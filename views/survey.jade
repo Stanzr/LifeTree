@@ -1,48 +1,133 @@
-
-- if ('undefined' !== typeof surveys && surveys.length)
-  h2 Surveys list
-  ul
-    - each survey in surveys
-      li
-        a(href='/survey/'+survey.slug) #{survey.survey_name}
-
-- if ('undefined' !== typeof survey && survey.id)
-    h2 Taking survey: #{survey.survey_name}
-    p Survey created at: #{survey.created_at}
-    p.questions
-    -if('undefined' !== typeof survey.survey_questions && survey.survey_questions.length)
-      -each question in survey.survey_questions
-        p.title
-          h3 * #{question.question}
-          -if(question.template === 'list')
-            ul
-              -if('undefined' !== typeof question.answers && question.answers.length)
-                each answer in question.answers
-                  li
-                    input(type='checkbox',value = answer.answer)
-                    #{answer.answer}
-          -if(question.template === 'table')
-            table.survey_table(cellspacing="0",cellpadding="0")
-              -if('undefined' !== typeof question.answers && question.answers.length)
-                tr.survey_table_head
-                  td
-                  each range in default_range
-                    td #{range}
-                each answer in question.answers
-                  tr
-                    td
-                      #{answer.answer}
-                    each range in default_range
-                      td.container
-                        input(type='radio', name=answer.id,value=range)
-
-
-
-
-
-
-
-
-
-
-
+.ui_left
+  .ui_left_content
+    .lt_left
+      p.explore This exploration should last you no more than five minutes...
+  ul.top_nav
+    li.active(style='z-index: 9;')
+      p(style='margin-left: -5px;')
+        strong Part 1: Q1
+        | of 4
+    li(style='z-index: 8;')
+      p Part 2
+    li(style='z-index: 7;')
+      p Part 3
+        li(style='z-index: 6;')
+          p Part 4
+            li.last(style='z-index: 5;')
+              p Answer!
+          h2.top_question
+            | Before you ask for a salary raise, do you consult with any of the following?
+          form.answers(action='#')
+            p.choices
+              input.styled(type='checkbox', value='1')
+              | Conduct online salary research
+              span.toinker
+                span.toink 32%
+                span.toink_info
+                  span.ti_head
+                    strong 47
+                    | people answered as you
+                  img(src='images/user.png', alt='')
+                  img(src='images/user.png', alt='')
+                  img(src='images/user.png', alt='')
+                  span.see_all
+                    a(href='#') see all
+            p.choices
+              input.styled(type='checkbox', value='2')
+              | Discuss with your boss or supervisor
+              span.toinker
+                span.toink 32%
+                span.toink_info
+                  span.ti_head
+                    strong 47
+                    | people answered as you
+                  img(src='images/user.png', alt='')
+                  img(src='images/user.png', alt='')
+                  img(src='images/user.png', alt='')
+                  span.see_all
+                    a(href='#') see all
+            p.choices
+              input.styled(type='checkbox', value='1')
+              | Conduct online salary research - Salary.com, etc
+              span.toinker
+                span.toink 32%
+                span.toink_info
+                  span.ti_head
+                    strong 47
+                    | people answered as you
+                  img(src='images/user.png', alt='')
+                  img(src='images/user.png', alt='')
+                  img(src='images/user.png', alt='')
+                  span.see_all
+                    a(href='#') see all
+            p.choices
+              input.styled(type='checkbox', value='2')
+              | Discuss with your boss or supervisor
+              span.toinker
+                span.toink 32%
+                span.toink_info
+                  span.ti_head
+                    strong 47
+                    | people answered as you
+                  img(src='images/user.png', alt='')
+                  img(src='images/user.png', alt='')
+                  img(src='images/user.png', alt='')
+                  span.see_all
+                    a(href='#') see all
+            p.choices
+              input.styled(type='checkbox', value='1')
+              | Conduct online salary research - Salary.com, etc
+              span.toinker
+                span.toink 32%
+                span.toink_info
+                  span.ti_head
+                    strong 47
+                    | people answered as you
+                  img(src='images/user.png', alt='')
+                  img(src='images/user.png', alt='')
+                  img(src='images/user.png', alt='')
+                  span.see_all
+                    a(href='#') see all
+            p.choices
+              input.styled(type='checkbox', value='2')
+              | Conduct online salary research - Salary.com, etc
+              span.toinker
+                span.toink 32%
+                span.toink_info
+                  span.ti_head
+                    strong 47
+                    | people answered as you
+                  img(src='images/user.png', alt='')
+                  img(src='images/user.png', alt='')
+                  img(src='images/user.png', alt='')
+                  span.see_all
+                    a(href='#') see all
+            p.choices
+              input.styled(type='checkbox', value='2')
+              | Other
+              span.why (please specify)
+              span.toinker
+                span.toink 32%
+                span.toink_info
+                  span.ti_head
+                    strong 47
+                    | people answered as you
+                  img(src='images/user.png', alt='')
+                  img(src='images/user.png', alt='')
+                  img(src='images/user.png', alt='')
+                  span.see_all
+                    a(href='#') see all
+            p.choices.choices_nb
+              input.other(type='text', value='')
+            p
+              button.next_button
+                span.next_q Next Question
+            .bottom_line
+              p
+                | press
+                em enter
+                span
+                  a(href='#') see all questions at once
+        .lt_left_bottom
+      //
+        .ui_left_content
