@@ -1,0 +1,255 @@
+!!! strict
+html(xmlns='http://www.w3.org/1999/xhtml')
+  head
+    meta(http-equiv='content-type', content='text/html;charset=utf-8')
+    script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
+    script(type='text/javascript', src='http://cdn.jquerytools.org/1.2.6/jquery.tools.min.js')
+    script(type='text/javascript', src='js/checks.js')
+    link(rel='stylesheet', href='style.css', media='screen')
+    link(rel='stylesheet', type='text/css', media='all', href='scroll.css')
+    //if IE 7
+      link(rel='stylesheet', href='ie7.css', media='screen')
+    //if IE 8
+      link(rel='stylesheet', href='ie8.css', media='screen')
+    title UI - Question
+  body
+
+    .container
+      .middler
+        .top
+          h1
+            a(href='#') Voluble
+          ul.navigation
+            li.lo
+              a(href='#') Log in
+            li
+              a(href='#') Sign up
+        //
+          .top
+        .center
+          .center_top
+          .center_mid
+            .ui_left
+              .ui_left_content
+                .lt_left
+                  p.explore This exploration should last you no more than five minutes...
+                  ul.top_nav
+                    li.active(style='z-index: 9;')
+                      p(style='margin-left: -5px;')
+                        strong Part 1: Q1
+                        | of 4
+                    li(style='z-index: 8;')
+                      p Part 2
+                    li(style='z-index: 7;')
+                      p Part 3
+                    li(style='z-index: 6;')
+                      p Part 4
+                    li.last(style='z-index: 5;')
+                      p Answer!
+                  h2.top_question
+                    | Before you ask for a salary raise, do you consult with any of the following?
+                  form.answers(action='#')
+                    p.choices
+                      input.styled(type='checkbox', value='1')
+                      | Conduct online salary research
+                      span.toinker
+                        span.toink 32%
+                        span.toink_info
+                          span.ti_head
+                            strong 47
+                            | people answered as you
+                          img(src='images/user.png', alt='')
+                          img(src='images/user.png', alt='')
+                          img(src='images/user.png', alt='')
+                          span.see_all
+                            a(href='#') see all
+                    p.choices
+                      input.styled(type='checkbox', value='2')
+                      | Discuss with your boss or supervisor
+                      span.toinker
+                        span.toink 32%
+                        span.toink_info
+                          span.ti_head
+                            strong 47
+                            | people answered as you
+                          img(src='images/user.png', alt='')
+                          img(src='images/user.png', alt='')
+                          img(src='images/user.png', alt='')
+                          span.see_all
+                            a(href='#') see all
+                    p.choices
+                      input.styled(type='checkbox', value='1')
+                      | Conduct online salary research - Salary.com, etc
+                      span.toinker
+                        span.toink 32%
+                        span.toink_info
+                          span.ti_head
+                            strong 47
+                            | people answered as you
+                          img(src='images/user.png', alt='')
+                          img(src='images/user.png', alt='')
+                          img(src='images/user.png', alt='')
+                          span.see_all
+                            a(href='#') see all
+                    p.choices
+                      input.styled(type='checkbox', value='2')
+                      | Discuss with your boss or supervisor
+                      span.toinker
+                        span.toink 32%
+                        span.toink_info
+                          span.ti_head
+                            strong 47
+                            | people answered as you
+                          img(src='images/user.png', alt='')
+                          img(src='images/user.png', alt='')
+                          img(src='images/user.png', alt='')
+                          span.see_all
+                            a(href='#') see all
+                    p.choices
+                      input.styled(type='checkbox', value='1')
+                      | Conduct online salary research - Salary.com, etc
+                      span.toinker
+                        span.toink 32%
+                        span.toink_info
+                          span.ti_head
+                            strong 47
+                            | people answered as you
+                          img(src='images/user.png', alt='')
+                          img(src='images/user.png', alt='')
+                          img(src='images/user.png', alt='')
+                          span.see_all
+                            a(href='#') see all
+                    p.choices
+                      input.styled(type='checkbox', value='2')
+                      | Conduct online salary research - Salary.com, etc
+                      span.toinker
+                        span.toink 32%
+                        span.toink_info
+                          span.ti_head
+                            strong 47
+                            | people answered as you
+                          img(src='images/user.png', alt='')
+                          img(src='images/user.png', alt='')
+                          img(src='images/user.png', alt='')
+                          span.see_all
+                            a(href='#') see all
+                    p.choices
+                      input.styled(type='checkbox', value='2')
+                      | Other
+                      span.why (please specify)
+                      span.toinker
+                        span.toink 32%
+                        span.toink_info
+                          span.ti_head
+                            strong 47
+                            | people answered as you
+                          img(src='images/user.png', alt='')
+                          img(src='images/user.png', alt='')
+                          img(src='images/user.png', alt='')
+                          span.see_all
+                            a(href='#') see all
+                    p.choices.choices_nb
+                      input.other(type='text', value='')
+                    p
+                      button.next_button
+                        span.next_q Next Question
+                    .bottom_line
+                      p
+                        | press
+                        em enter
+                        span
+                          a(href='#') see all questions at once
+                .lt_left_bottom
+              //
+                .ui_left_content
+            //
+              .ui_left
+            .ui_right
+              .right_question
+                h2 Should I ask my boss for a raise?
+                span.exit
+                  a(href='#') exit
+                p
+                  | Our goal is to help you determine whether we can tell you what type of pay-raise you should ask of your boss. Please share with us honest answers which will fold back into our tool design.
+                p
+                  | Phasellus sodales, tortor sed fringilla blandit, est augue congue diam, malesuada tempus urna est in libero. Lorem ipsum dolor.
+              .people.people_lt
+                h3.answered 148 people have got the answer!
+                .side_nav
+                  span.prev
+                    a(href='')
+                  .divide_side
+                  span.next
+                    a(href='')
+                ul
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+            //
+              .ui_right
+          //
+            .center_mid
+          .center_bottom
+          .footer
+            p.copyright
+              | All text and design is copyright © 1999-2011 Lifetree, LLC. All rights reserved.
+            p.small_links
+              a(href='#') Privacy Policy
+              a(href='#') Terms of Service
+              a(href='#') About Project
+              a(href='#') Contact Us
+        //
+          .center
+      //
+        .middler
+    //
+      .container
+    script(type='text/javascript')
+      $(document).ready(function(){
+      $('span.toink').tooltip({ effect: 'fade'});
+      });

@@ -1,38 +1,123 @@
-!!! 5
-html
+!!! strict
+html(xmlns='http://www.w3.org/1999/xhtml')
   head
-    title = "login"
-    link(rel="stylesheet",type="text/css",href="/css/main.css")
-    script(lang="text/javascript",src="/socket.io/socket.io.js")
-    script(lang="text/javascript",src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
-    script(lang="text/javascript",src="/js/main.js")
+    meta(http-equiv='content-type', content='text/html;charset=utf-8')
+    script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
+    script(type='text/javascript', src='http://cdn.jquerytools.org/1.2.6/jquery.tools.min.js')
+    script(type='text/javascript', src='js/checks.js')
+    link(rel='stylesheet', href='css/style.css', media='screen')
 
+    //link(rel='stylesheet', href='css/scroll.css', media='all' )
+    //if IE 7
+      link(rel='stylesheet', href='css/ie7.css', media='screen')
+    //if IE 8
+      link(rel='stylesheet', href='css/ie8.css', media='screen')
+    title UI - Question
   body
-    #head
-      if('undefined' !== typeof session && session.auth &&session.auth.loggedIn===true)
-        p#hello Hi, #{session.info.user_name}
-          img#profile_pic(src=session.info.profile_pic_url)
-      table
-        tr
-          td
-            a(href='/auth/twitter')
-              img#twitter_login(src='/img/twitter_newbird_blue.png')
-          td
-            a(href='/auth/facebook')
-              img#fb_login(src='/img/f_logo.jpg')
-          td
-            p#login_message
-              |or you can
-              a(href='/login') login
-              |or even
-              a(href='/register') register
-          td
-            a(href='/survey') check out surveys
-          td
-            a(href='/chat') try out our chat!
+    .container
+      .middler
+        .top
+          h1
+            a(href='/')
+          ul.navigation
+            li.lo
+              a(href='/login') Log in
+            li
+              a(href='/signup') Sign up
+        //
+          .top
+        .center
+          .center_top
+          .center_mid
 
-    div!=body
-
-
-
-
+            //
+              .ui_left
+            .ui_right
+              .right_question
+                h2 Should I ask my boss for a raise?
+                span.exit
+                  a(href='#') exit
+                p
+                  | Our goal is to help you determine whether we can tell you what type of pay-raise you should ask of your boss. Please share with us honest answers which will fold back into our tool design.
+                p
+                  | Phasellus sodales, tortor sed fringilla blandit, est augue congue diam, malesuada tempus urna est in libero. Lorem ipsum dolor.
+              .people.people_lt
+                h3.answered 148 people have got the answer!
+                .side_nav
+                  span.prev
+                    a(href='')
+                  .divide_side
+                  span.next
+                    a(href='')
+                ul
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+                  li
+                    a(href='#')
+                      img(src='images/user.png', alt='')
+            //
+              .ui_right
+          //
+            .center_mid
+          .center_bottom
+          .footer
+            p.copyright
+              | All text and design is copyright © 1999-2011 Lifetree, LLC. All rights reserved.
+            p.small_links
+              a(href='/privacy') Privacy Policy&nbsp;
+              a(href='/terms') Terms of Service&nbsp;
+              a(href='/about') About Project&nbsp;
+              a(href='/contact') Contact Us
+        //
+          .center
+      //
+        .middler
+    //
+      .container
+    script(type='text/javascript')
+      $(document).ready(function(){
+      $('span.toink').tooltip({ effect: 'fade'});
+      });
